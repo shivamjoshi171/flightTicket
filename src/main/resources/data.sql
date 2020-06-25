@@ -1,5 +1,60 @@
-insert into cities values('1','CHD','Chandi')
-insert into cities values('2','DEL','Delhi')
+insert into cities (cityid,city_code,city_name) values(null,'CHD','Chandighar')
+insert into cities (cityid,city_code,city_name) values(null,'DEL','Delhi')
+insert into cities (cityid,city_code,city_name) values(null,'BOM','Mumbai')
+insert into cities (cityid,city_code,city_name) values(null,'BLR','Banglore')
+insert into cities (cityid,city_code,city_name) values(null,'MAA','Chennai')
+insert into cities (cityid,city_code,city_name) values(null,'GOI','GOA')
+insert into cities (cityid,city_code,city_name) values(null,'PQN','PUNE')
 
 
 
+
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'CHD','12:25' , '300','DEL','10:00',  '3000')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'BOM','15:25' , '300','DEL','12:00',  '3500')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'BLR','18:25' , '300','DEL','16:00',  '4000')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'MAA','20:25' , '300','DEL','18:00',  '3600')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'GOI','22:25' , '300','DEL','20:00',  '3303')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'PQN','02:25' , '300','DEL','00:40',  '4400')
+
+
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'DEL','11:25' , '300','CHD','11:00',  '3000')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'BOM','14:25' , '300','CHD','13:00',  '3560')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'BLR','17:25' , '300','CHD','17:00',  '4040')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'MAA','19:25' , '300','CHD','19:00',  '3620')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'GOI','21:25' , '300','CHD','21:00',  '3503')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'PQN','01:25' , '300','CHD','01:40',  '4450')
+
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'DEL','11:25' , '300','BOM','11:00',  '3000')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'CHD','14:25' , '300','BOM','13:00',  '3560')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'BLR','17:25' , '300','BOM','17:00',  '4040')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'MAA','19:25' , '300','BOM','19:00',  '3620')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'GOI','21:25' , '300','BOM','21:00',  '3503')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'PQN','01:25' , '300','BOM','01:40',  '4450')
+
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'DEL','11:25' , '300','BLR','11:00',  '3000')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'CHD','14:25' , '300','BLR','13:00',  '3560')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'BOM','17:25' , '300','BLR','17:00',  '4040')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'MAA','19:25' , '300','BLR','19:00',  '3620')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'GOI','21:25' , '300','BLR','21:00',  '3503')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'PQN','01:25' , '300','BLR','01:40',  '4450')
+
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'DEL','11:25' , '300','MAA','11:00',  '3000')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'CHD','14:25' , '300','MAA','13:00',  '3560')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'BOM','17:25' , '300','MAA','17:00',  '4040')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'BLR','19:25' , '300','MAA','19:00',  '3620')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'GOI','21:25' , '300','MAA','21:00',  '3503')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'PQN','01:25' , '300','MAA','01:40',  '4450')
+
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'DEL','11:25' , '300','GOI','11:00',  '3000')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'CHD','14:25' , '300','GOI','13:00',  '3560')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'BOM','17:25' , '300','GOI','17:00',  '4040')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'BLR','19:25' , '300','GOI','19:00',  '3620')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'MAA','21:25' , '300','GOI','21:00',  '3503')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'PQN','01:25' , '300','GOI','01:40',  '4450')
+
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'DEL','11:25' , '300','PQN','11:00',  '3000')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'CHD','14:25' , '300','PQN','13:00',  '3560')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'BOM','17:25' , '300','PQN','17:00',  '4040')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'BLR','19:25' , '300','PQN','19:00',  '3620')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'MAA','21:25' , '300','PQN','21:00',  '3503')
+insert into flight (flight_id, arival_city, arrival_time, available_seats, departure_city, departure_time, single_ticket_price) values (null, 'GOI','01:25' , '300','PQN','01:40',  '4450')
