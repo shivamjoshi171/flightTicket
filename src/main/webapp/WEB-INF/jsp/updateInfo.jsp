@@ -3,57 +3,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-input[type=text], select,[type=password] ,[type=number]{
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
 
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-</style>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Update</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+	<style type="text/css">
+body{
+background-color: #dcdcdc45;
+}
+
+
+</style>
 </head>
 <body>
-<form action="updateData" method="post">
-  
-  	<label for="firstName">First Name</label>
-    <input type="text" id="firstName" name="firstName" placeholder="First Name">
-  
+<jsp:include page="header.jsp"></jsp:include>
+<div class="container">
+<div class="col-lg-1"></div>
+<div class="col-lg-10  col-lg-10 jumbotron jumbotron-fluid">
+	
+	<form action="updateData" method="post">
+  <div class="form-group">
+  <label for="firstName">First Name</label>
+    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+  </div>
+   <div class="form-group">
      <label for="lastName">Last Name</label>
-    <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
   
-  	 <label for="mobileNumber">Mobile Number</label>
-    <input type="text" id="mobileNumber" name="mobileNumber" placeholder="Mobile Number">
-  
-     <label for="emailId">Email</label>
-    <input type="text" id="emailId" name="emailId" placeholder="Email">
+  </div>
+   <div class="form-group">
+   <label for="mobileNumber">Mobile Number</label>
+    <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" placeholder="Mobile Number">
+  </div>
+   <div class="form-group">
+   <label for="emailId">Email</label>
+    <input type="text" class="form-control" id="emailId" name="emailId" placeholder="Email">
+  </div>
+ 
    
-    <input type="submit" value="Submit">
+    <input type="submit" class="btn btn-primary btn-block" value="Submit">
   </form>
+
+</div>
+<div class="col-lg-1"></div>
+
+</div>
+
+ <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

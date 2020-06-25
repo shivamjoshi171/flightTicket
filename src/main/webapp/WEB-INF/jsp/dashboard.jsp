@@ -5,30 +5,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>dashboard</title>
 
-<style>
-table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+body{
+background-color: #dcdcdc45;
 }
 
-td, th {
-	border: 1px solid #dddddd;
-	text-align: left;
-	padding: 8px;
-}
 
-tr:nth-child(even) {
-	background-color: #dddddd;
-}
+
+
 </style>
 </head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+<div class="container">
 <h1>Flight Details</h1>
-<h1>${noreg}</h1>
+</div>
 
-<table>
+<div class="container">
+<table class="table">
 	<th>Departure City</th>
 	<th>Arival City</th>
 	<th>Departure Time</th>
@@ -48,7 +52,8 @@ tr:nth-child(even) {
 		</tr>
 	</c:forEach>
 <a href="/addNewFlight">Add New Flight</a>
-
 </table>
+</div>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

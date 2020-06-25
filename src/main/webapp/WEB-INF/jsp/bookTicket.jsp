@@ -5,24 +5,110 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Book Ticket</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+.rowStyle{
+    border-bottom: 1px solid #dedbdb;
+    margin: 10px;
+    border-bottom-left-radius: 20px;
+    padding: 8px;
+}
+.tRow{
+padding: 5px;
+    margin:5px;
+}
+body{
+background-color: #dcdcdc45;
+}
+</style>
 </head>
+
 <body>
-	Available Seats: ${flightDetail.getAvailableSeats() }
-	<br> Price: ${flightDetail.getSingleTicketPrice() }
-	<br> Departure Time: ${flightDetail.getDepartureTime() }
-	<br> Arival TIME: ${flightDetail.getArrivalTime()}
-	<br> Departure From:
-	${flightDetail.getDepartureCity().getCityName() }
-	<br> Arival At: ${flightDetail.getArivalCity().getCityName()}
-	<br>
-Detail Of Travllers: <br>
+<jsp:include page="header.jsp"></jsp:include>
+
+<div class="container">
+<div class="col-lg-6 jumbotron jumbotron-fluid">
+<div class="row">
+<h2>Flight Details</h2>
+</div>
+<div class="row rowStyle">
+<div class="col-lg-6">
+Available Seat
+</div>
+<div class="col-lg-6">
+${flightDetail.getAvailableSeats() }
+</div>
+</div>
+<div class="row rowStyle">
+<div class="col-lg-6">
+Price
+</div>
+<div class="col-lg-6">
+ ${flightDetail.getSingleTicketPrice() }
+</div>
+</div>
+<div class="row rowStyle">
+<div class="col-lg-6">
+Departure Time
+</div>
+<div class="col-lg-6">
+ ${flightDetail.getDepartureTime() }
+</div>
+</div>
+<div class="row rowStyle">
+<div class="col-lg-6">
+Arival Time
+</div>
+<div class="col-lg-6">
+ ${flightDetail.getArrivalTime()}
+</div>
+</div>
+<div class="row rowStyle">
+<div class="col-lg-6">
+Departure 
+</div>
+<div class="col-lg-6">
+${flightDetail.getDepartureCity().getCityName() }
+</div>
+</div>
+<div class="row rowStyle">
+<div class="col-lg-6">
+Arival 
+</div>
+<div class="col-lg-6">
+${flightDetail.getArivalCity().getCityName()}
+</div>
+</div>
+</div>
+
+
+<div class="col-lg-6">
+
+<h2>Traveller Information</h2> <br>
 <form action="/payment" method="post">
 	<c:if test="${numberAdult >= 1}">
-	<br>
+	
 		<c:forEach var="i" begin="1" end="${numberAdult}">
-		Adult ${i}: 	<input type="text" name="AdultF_${i}" placeholder="firstName"><input type="text" name="AdultL_${i}" placeholder="LastName">
-			<br>
+		<div class="row tRow">
+		<div class="col-lg-2">
+		<span class="input-group-text">Adult ${i}: </span>
+		</div>
+			<div class="col-lg-5">
+		<input type="text" aria-label="First name"  name="AdultF_${i}" class="form-control" placeholder="First Name">
+		</div>
+			<div class="col-lg-5">
+		<input type="text" aria-label="Last name" name="AdultL_${i}" class="form-control" placeholder="Last Name">
+		</div>
+		</div>
+		
 		</c:forEach>
 	</c:if>
 
@@ -30,18 +116,48 @@ Detail Of Travllers: <br>
 <c:if test="${numberChild >= 1}">
 
 	<c:forEach var="i" begin="1" end="${numberChild}">
-	Child ${i}:	<input type="text" name="ChildF_${i}" placeholder="firstName"><input type="text" name="ChildL_${i}" placeholder="LastName">
-		<br>
+		<div class="row tRow">
+		<div class="col-lg-2">
+		<span class="input-group-text">Child ${i}: </span>
+		</div>
+			<div class="col-lg-5">
+		<input type="text" aria-label="First name"  name="ChildF_${i}" class="form-control" placeholder="First Name">
+		</div>
+			<div class="col-lg-5">
+		<input type="text" aria-label="Last name" name="ChildL_${i}" class="form-control" placeholder="Last Name">
+		</div>
+		</div>
 	</c:forEach>
 </c:if>
 <c:if test="${numberChild >= 1}">
 	<c:forEach var="i" begin="1" end="${numberInfant}">
-	Infant ${i }:	<input type="text" name="InfantF_${i}" placeholder="firstName"><input type="text" name="InfanL_${i}" placeholder="LastName">
-		<br>
+	
+	
+		<div class="row tRow" >
+		<div class="col-lg-2">
+		<span class="input-group-text">Infant ${i}: </span>
+		</div>
+			<div class="col-lg-5">
+		<input type="text" aria-label="First name"  name="InfantF_${i}" class="form-control" placeholder="First Name">
+		</div>
+			<div class="col-lg-5">
+		<input type="text" aria-label="Last name" name="InfanL_${i}" class="form-control" placeholder="Last Name">
+		</div>
+		</div>
+
 	</c:forEach>
 </c:if>
-	Total Amount: ${totalPrice}
-<input type="submit" value="MAKE PAYMENT">
+	<h3>Total Amount: ${totalPrice}</h3>
+<input type="submit" class="btn btn-primary btn-block" value="MAKE PAYMENT">
 </form>	
+
+</div>
+
+
+
+</div>
+	
+
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

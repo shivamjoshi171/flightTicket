@@ -2,79 +2,81 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
-<style>
-input[type=text], select,[type=password] ,[type=number]{
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+<head>
+<title>Update Flight Details</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-input[type=submit]{
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-input[type=submit]:hover {
-  background-color: #45a049;
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<style type="text/css">
+body{
+background-color: #dcdcdc45;
 }
-
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-a{
-  width: 97%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    display: block;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    font-size:0.8em;
-}
-
 </style>
+	
+</head>
 <body>
-
-<h3>Student Login</h3>
-<h3 style="color:red">${err}</h3>
-<div>
-  <form action="/updateFlight" method="post">
-  	 <input type="hidden" id="availableSeats" name="availableSeats" value="${flightDetail.getAvailableSeats()}">
- 	 <input type="hidden" id="flight" name="flightId" value="${flightDetail.getFlightId()}">
-    <label for="departureCity">Departure City</label>
-    <input type="text" id="departureCity" name="depCity" value="${flightDetail.getDepartureCity().getCityCode()}">
-   
-     <label for="arrivalCity">Arrival City</label>
-    <input type="text" id="arrivalCity" name="arrCity" value="${flightDetail.getArivalCity().getCityCode()}">
-    
-     <label for="departureTime">Departure Time</label>
-    <input type="text" id="departureTime" name="departureTime" value="${flightDetail.getDepartureTime()}">
-   
-     <label for="arrivalTime">Arrival Time</label>
-    <input type="text" id="arrivalTime" name="arrivalTime" value="${flightDetail.getArrivalTime() }">
-    
-    <label for="singleTicketPrice">Ticket Price</label>
-    <input type="text" id="singleTicketPrice" name=singleTicketPrice value="${flightDetail.getSingleTicketPrice()}">
-  
-    <input type="submit" value="Submit">
-  </form>
+<jsp:include page="header.jsp"></jsp:include>
+<div class="container">
+<h3>Update Details</h3>
 </div>
 
+
+
+<div class="container">
+
+<div class="col-lg-1"></div>
+
+<div class="col-lg-10 jumbotron jumbotron-fluid">
+<form action="/updateFlight" method="post">
+<input type="hidden" id="availableSeats" name="availableSeats" value="${flightDetail.getAvailableSeats()}">
+<input type="hidden" id="flight" name="flightId" value="${flightDetail.getFlightId()}">
+    
+<div class="form-group">
+<label for="departureCity">Departure City</label>
+    <input type="text" class="form-control" id="departureCity" name="depCity" value="${flightDetail.getDepartureCity().getCityCode()}">
+   
+
+</div>
+<div class="form-group">
+
+     <label for="arrivalCity">Arrival City</label>
+    <input type="text" class="form-control" id="arrivalCity" name="arrCity" value="${flightDetail.getArivalCity().getCityCode()}">
+    
+
+</div>
+<div class="form-group">
+
+     <label for="departureTime">Departure Time</label>
+    <input type="text" class="form-control" id="departureTime" name="departureTime" value="${flightDetail.getDepartureTime()}">
+   
+
+</div>
+<div class="form-group">
+<label for="arrivalTime">Arrival Time</label>
+    <input type="text" class="form-control" id="arrivalTime" name="arrivalTime" value="${flightDetail.getArrivalTime() }">
+    
+
+</div>
+<div class="form-group">
+ <label for="singleTicketPrice">Ticket Price</label>
+    <input type="text" class="form-control" id="singleTicketPrice" name=singleTicketPrice value="${flightDetail.getSingleTicketPrice()}">
+  
+
+</div>
+  	 <input type="submit" class="btn btn-primary btn-block" value="Submit">
+  </form>
+</div>
+<div class="col-lg-1"></div>
+</div>
+
+
+  
+
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
