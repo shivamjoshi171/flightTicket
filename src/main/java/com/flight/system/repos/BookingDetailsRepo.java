@@ -13,5 +13,11 @@ public interface BookingDetailsRepo extends JpaRepository<BookingDetails, String
 	
 	@Query(value = "SELECT * FROM BOOKING_DETAILS where user_id=:uid",nativeQuery = true)
 	List<BookingDetails> getAllDetail(@Param("uid")String uid);
+	
+	@Query(value = "SELECT count(*) FROM BOOKING_DETAILS where user_id=:uid",nativeQuery = true)
+	int  getCountDetail(@Param("uid")String uid);
+	
+
+	
 
 }

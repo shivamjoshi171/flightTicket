@@ -20,18 +20,104 @@ body{
 background-color: #dcdcdc45;
 }
 
+.tableEd{
+	padding: 25px;
+    border-right: 1px Solid #b1a4a4;
+    border-radius: 24px;
+    box-shadow: 2px 10px 11px grey;
+    margin: 20px;
+}
 
 
 
 </style>
 </head>
+
 <body>
-<jsp:include page="header.jsp"></jsp:include>
-<div class="container">
-<h1>Flight Details</h1>
+<header class="header" style="background-color: #ffffff;box-shadow: 1px 2px 10px grey;">
+
+		<nav class="navbar navbar-style">
+			<div class="container">
+				<div class="navbar-header">
+					<h2 class=" display-3">Flight Booking</h2>
+				</div>
+				<ul class="nav navbar-nav  navbar-right">
+				<c:if test="${sessionScope.admin ==1}">
+				<li><a href="/home"> Home</a></li>
+				</c:if>
+				
+				<c:if test="${sessionScope.userEmail.equals('no')}">
+						<li>	<a  style="cursor: pointer" data-toggle="modal" data-target="#myModal">Login/Singup</a></li>
+					</c:if>
+				<c:if test="${!sessionScope.userEmail.equals('no')}">
+						<li><p style="color: #4285c0;margin: 15px;"> Welcome , ${sessionScope.userName}</p></li>
+						<li>	<a  href="/userProfile">Profile</a></li>
+						<li>	<a  href="/logout">Logout</a></li>
+					</c:if>
+				</ul>
+
+			</div>
+
+		</nav>
+		
+	</header>
+	
+	<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+         <form action="login" method="post">
+ 		<div class="form-group">
+ 		<label for="emailId">Email</label>
+   		 <input class="form-control"type="text" id="emailId" name="emailId" placeholder="Email" required="required">
+ 		</div>
+     	<div class="form-group">
+     	<label for="password">Password</label>
+    	<input class="form-control" type="password" id="password" name="password" placeholder=" Password" required="required">
+     	</div>
+     	<div class="form-check form-check-inline">
+  		<input class="form-check-input" type="radio" name="loginType" id="economy" value="User" required="required">
+ 		 <label class="form-check-label" for="economy">User</label>
+		</div>
+		<div class="form-check form-check-inline">
+  		<input class="form-check-input" type="radio" name="loginType" id="Premimum Economy" value="Admin" required="required">
+ 		 <label class="form-check-label" for="Premimum Economy">Admin</label>
+		</div>
+     	
+   		 <input type="submit" class="btn btn-primary btn-block" value="Submit">
+  		</form>
+  		<br>
+  		<a class="btn btn-primary btn-block" href="/register">Register</a>
+ 
 </div>
 
+      </div>
+     
+    </div>
+
+  </div>
+  
+ <!-- Headder end -->
+
+
 <div class="container">
+<div class="row">
+<div class="col-lg-7 tableEd">
+<div class="row">
+<div class="col-lg-9">
+<h3>Flight Details</h3>
+</div>
+<div class="col-lg-3">
+<a href="/addNewFlight" class="btn btn-default btn-sm">Add New Flight</a>
+</div>
+
+</div>
 <table class="table">
 	<th>Departure City</th>
 	<th>Arival City</th>
@@ -48,11 +134,33 @@ background-color: #dcdcdc45;
 			<td>${listValue.getArrivalTime()}</td>
 			<td>${listValue.getAvailableSeats()}</td>
 			<td>${listValue.getSingleTicketPrice()}</td>
-			<td><a href="/updateFlightDetails/${listValue.getFlightId() }">edit</a></td>
+			<td><a class="glyphicon glyphicon-pencil" href="/updateFlightDetails/${listValue.getFlightId() }"></a></td>
 		</tr>
 	</c:forEach>
-<a href="/addNewFlight">Add New Flight</a>
 </table>
+
+</div>
+
+<div class="col-lg-4 tableEd">
+<h3>Airline Details</h3>
+<table class="table">
+<th>Airline Name</th>
+<th>Add Flights</th>
+<th> Current Flights</th>
+<c:forEach var="listValue" items="${airline}">
+		<tr>
+			<td>${listValue.getAirlineName()}</td>
+			<td><a class="glyphicon glyphicon-pencil" href="/addFilghtToAirline/${listValue.getAirlineId() }"></a></td>
+			<td><a class="btn btn-default" href="/viewFlighs/${listValue.getAirlineId() }">View</a></td>
+		</tr>
+	</c:forEach>
+</table>
+</div>
+
+</div>
+
+
+
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 </body>

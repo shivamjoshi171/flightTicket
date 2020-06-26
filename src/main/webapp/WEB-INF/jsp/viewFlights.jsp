@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Update Flight Details</title>
+<meta charset="UTF-8">
+<title>dashboard</title>
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -13,13 +15,24 @@
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<style type="text/css">
+<style type="text/css">
 body{
 background-color: #dcdcdc45;
 }
+
+.tableEd{
+	padding: 25px;
+    border-right: 1px Solid #b1a4a4;
+    border-radius: 24px;
+    box-shadow: 2px 10px 11px grey;
+    margin: 20px;
+}
+
+
+
 </style>
-	
 </head>
+
 <body>
 <header class="header" style="background-color: #ffffff;box-shadow: 1px 2px 10px grey;">
 
@@ -28,8 +41,11 @@ background-color: #dcdcdc45;
 				<div class="navbar-header">
 					<h2 class=" display-3">Flight Booking</h2>
 				</div>
-				<ul class="nav navbar-nav  navbar-right"	>
+				<ul class="nav navbar-nav  navbar-right">
+				<c:if test="${sessionScope.admin ==1}">
 				<li><a href="/home"> Home</a></li>
+				</c:if>
+				
 				<c:if test="${sessionScope.userEmail.equals('no')}">
 						<li>	<a  style="cursor: pointer" data-toggle="modal" data-target="#myModal">Login/Singup</a></li>
 					</c:if>
@@ -89,61 +105,45 @@ background-color: #dcdcdc45;
   
  <!-- Headder end -->
 
-<div class="container">
-<h3>Update Details</h3>
-</div>
-
-
 
 <div class="container">
-
+<div class="row">
 <div class="col-lg-1"></div>
-
-<div class="col-lg-10 jumbotron jumbotron-fluid">
-<form action="/updateFlight" method="post">
-<input type="hidden" id="availableSeats" name="availableSeats" value="${flightDetail.getAvailableSeats()}">
-<input type="hidden" id="flight" name="flightId" value="${flightDetail.getFlightId()}">
-    
-<div class="form-group">
-<label for="departureCity">Departure City</label>
-    <input type="text" class="form-control" id="departureCity" name="depCity" value="${flightDetail.getDepartureCity().getCityCode()}" required="required">
-   
+<div class="col-lg-10 tableEd">
+<div class="row">
+<div class="col-lg-9">
+<h3>Flight Details</h3>
+</div>
+</div>
+<table class="table">
+	<th>Departure City</th>
+	<th>Arival City</th>
+	<th>Departure Time</th>
+	<th>Arival Time</th>
+	<th>Available Seats</th>
+	<th>TicketPrice</th>
+	<c:forEach var="listValue" items="${flightList}">
+		<tr>
+			<td>${listValue.getDepartureCity().getCityName()}</td>
+			<td>${listValue.getArivalCity().getCityName()}</td>
+			<td>${listValue.getDepartureTime()}</td>
+			<td>${listValue.getArrivalTime()}</td>
+			<td>${listValue.getAvailableSeats()}</td>
+			<td>${listValue.getSingleTicketPrice()}</td>
+		</tr>
+	</c:forEach>
+</table>
 
 </div>
-<div class="form-group">
 
-     <label for="arrivalCity">Arrival City</label>
-    <input type="text" class="form-control" id="arrivalCity" name="arrCity" value="${flightDetail.getArivalCity().getCityCode()}" required="required">
-    
+<div class="col-lg-1 "></div>
 
-</div>
-<div class="form-group">
 
-     <label for="departureTime">Departure Time</label>
-    <input type="text" class="form-control" id="departureTime" name="departureTime" value="${flightDetail.getDepartureTime()}" required="required">
-   
-
-</div>
-<div class="form-group">
-<label for="arrivalTime">Arrival Time</label>
-    <input type="text" class="form-control" id="arrivalTime" name="arrivalTime" value="${flightDetail.getArrivalTime() }"required="required" >
-    
-
-</div>
-<div class="form-group">
- <label for="singleTicketPrice">Ticket Price</label>
-    <input type="text" class="form-control" id="singleTicketPrice" name=singleTicketPrice value="${flightDetail.getSingleTicketPrice()}" required="required">
-  
-
-</div>
-  	 <input type="submit" class="btn btn-primary btn-block" value="Submit">
-  </form>
-</div>
-<div class="col-lg-1"></div>
 </div>
 
 
-  
 
+</div>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

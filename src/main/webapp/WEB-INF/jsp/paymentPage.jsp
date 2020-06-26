@@ -221,7 +221,7 @@ on <= small devices and 4/12 page width on >= medium devices -->
 												<input type="tel" class="form-control" name="cardNumber"
 													placeholder="Valid Card Number" autocomplete="cc-number"
 													required autofocus /> <span class="input-group-addon"><i
-													class="fa fa-credit-card"></i></span>
+													class="fa fa-credit-card" id="card"></i></span>
 											</div>
 										</div>
 									</div>
@@ -230,15 +230,15 @@ on <= small devices and 4/12 page width on >= medium devices -->
 									<div class="col-xs-7 col-md-7">
 										<div class="form-group">
 											<label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span
-												class="visible-xs-inline">EXP</span> DATE</label> <input type="tel"
-												class="form-control" name="cardExpiry" placeholder="MM / YY"
-												autocomplete="cc-exp" required />
+												class="visible-xs-inline">EXP</span> DATE</label> 
+												<input type="tel"	class="form-control" name="cardExpiry" placeholder="MM / YY"
+												autocomplete="cc-exp" id="exp" required />
 										</div>
 									</div>
 									<div class="col-xs-5 col-md-5 pull-right">
 										<div class="form-group">
 											<label for="cardCVC">CV CODE</label> <input type="tel"
-												class="form-control" name="cardCVC" placeholder="CVC"
+												class="form-control" name="cardCVC" id ="cv"placeholder="CVC"
 												autocomplete="cc-csc" required />
 										</div>
 									</div>
@@ -247,13 +247,13 @@ on <= small devices and 4/12 page width on >= medium devices -->
 									<div class="col-xs-12">
 										<div class="form-group">
 											<label for="couponCode"> HOLDER NAME</label> <input
-												type="text" class="form-control" name="couponCode" />
+												type="text" class="form-control" id= "hname" name="couponCode" />
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-xs-12">
-										<button class="btn btn-success btn-lg btn-block" type="submit">
+										<button class="btn btn-success btn-lg btn-block" type="submit" onclick="pdf()">
 											PAY</button>
 									</div>
 								</div>
@@ -275,7 +275,20 @@ on <= small devices and 4/12 page width on >= medium devices -->
 			</div>
 		</div>
 
-
+</div>
+<script type="text/javascript">
+function pdf(){
+	var a=document.getElementById("hname").value;
+	var b=document.getElementById("exp").value;
+	var c=document.getElementById("cv").value;
+	var d=document.getElementById("card").value;
+	if(a!="" && b!=""&&c!=""&& d!=""){
+		window.alert('Ticket Booked');
+		window.open("/home");
+		}
+		
+}
+</script>
 
 </body>
 </html>

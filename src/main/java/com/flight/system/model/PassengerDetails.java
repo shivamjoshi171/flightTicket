@@ -33,6 +33,9 @@ public class PassengerDetails {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	public PassengerDetails() {
+		super();
+	}
 	public String getLastName() {
 		return lastName;
 	}

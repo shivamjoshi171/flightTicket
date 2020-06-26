@@ -13,5 +13,8 @@ public interface UserRepo extends JpaRepository<User, String>{
 	int userExist(@Param("emid") String emid,@Param("pass") String pass);
 	@Query(value = "SELECT * FROM USER where email_id=:emid",nativeQuery = true)
 	User findUserByEmail(@Param("emid")String emid);
+	@Query(value = "SELECT count(*) from User where email_id=:uid ",nativeQuery = true)
+	int userCount(@Param("uid") String id);
+	
 
 }

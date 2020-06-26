@@ -13,5 +13,8 @@ public interface PassengerDetailsRepo extends JpaRepository<PassengerDetails, St
 	
 	@Query(value="SELECT * FROM PASSENGER_DETAILS WHERE user_id=:uid AND booking_id=:bid",nativeQuery = true)
 	List<PassengerDetails> getTravllerDetail(@Param("uid")String uid,@Param("bid")String bid);
-
+	
+	@Query(value="SELECT * FROM PASSENGER_DETAILS WHERE  booking_id=:bid",nativeQuery = true)
+	PassengerDetails getDetail(@Param("bid")String bid);
+	
 }

@@ -36,7 +36,75 @@ box-shadow: 0px 1px 11px #c1bfbf;
 </style>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<header class="header" style="background-color: #ffffff;box-shadow: 1px 2px 10px grey;">
+
+		<nav class="navbar navbar-style">
+			<div class="container">
+				<div class="navbar-header">
+					<h2 class=" display-3">Flight Booking</h2>
+				</div>
+				<ul class="nav navbar-nav  navbar-right"	>
+					<c:if test="${sessionScope.admin ==1}">
+				<li><a href="/home"> Home</a></li>
+				</c:if>
+				<c:if test="${sessionScope.userEmail.equals('no')}">
+						<li>	<a  style="cursor: pointer" data-toggle="modal" data-target="#myModal">Login/Singup</a></li>
+					</c:if>
+				<c:if test="${!sessionScope.userEmail.equals('no')}">
+						<li><p style="color: #4285c0;margin: 15px;"> Welcome , ${sessionScope.userName}</p></li>
+						<li>	<a  href="/userProfile">Profile</a></li>
+						<li>	<a  href="/logout">Logout</a></li>
+					</c:if>
+				</ul>
+
+			</div>
+
+		</nav>
+		
+	</header>
+	
+	<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+         <form action="login" method="post">
+ 		<div class="form-group">
+ 		<label for="emailId">Email</label>
+   		 <input class="form-control"type="text" id="emailId" name="emailId" placeholder="Email" required="required">
+ 		</div>
+     	<div class="form-group">
+     	<label for="password">Password</label>
+    	<input class="form-control" type="password" id="password" name="password" placeholder=" Password" required="required">
+     	</div>
+     	<div class="form-check form-check-inline">
+  		<input class="form-check-input" type="radio" name="loginType" id="economy" value="User" required="required">
+ 		 <label class="form-check-label" for="economy">User</label>
+		</div>
+		<div class="form-check form-check-inline">
+  		<input class="form-check-input" type="radio" name="loginType" id="Premimum Economy" value="Admin" required="required">
+ 		 <label class="form-check-label" for="Premimum Economy">Admin</label>
+		</div>
+     	
+   		 <input type="submit" class="btn btn-primary btn-block" value="Submit">
+  		</form>
+  		<br>
+  		<a class="btn btn-primary btn-block" href="/register">Register</a>
+ 
+</div>
+
+      </div>
+     
+    </div>
+
+  </div>
+  
+ <!-- Headder end -->
 <h1>Flight Bookings Details</h1>
 
 <div class="container">
@@ -58,11 +126,14 @@ Departure Time
 <div class="col-lg-2">
 Arival Time
 </div>
-<div class="col-lg-3">
+<div class="col-lg-2">
 Departure 
 </div>
-<div class="col-lg-3">
+<div class="col-lg-2">
 Arival 
+</div>
+<div class="col-lg-2">
+Cancel Booking
 </div>
 </div>
 <hr>
@@ -76,22 +147,23 @@ ${bookDetail.get(i).getBookingDate()}
 <div class="col-lg-2">
  ${flight.get(i).getArrivalTime()}
 </div>
-<div class="col-lg-3">
+<div class="col-lg-2">
 ${flight.get(i).getDepartureCity().getCityName() }
 </div>
-<div class="col-lg-3">
+<div class="col-lg-2">
  ${flight.get(i).getArivalCity().getCityName()}
 </div>
+<div class="col-lg-2">
+<a class="btn btn-default" href="/cancelBooking/${bookDetail.get(i).getBookingId()}">cancel</a>
 </div>
 </div>
-<div class="col-lg-3"></div>
+</div>
+<div class="col-lg-1"></div>
 </div>
 
 
 
 </c:forEach>
 </div>
-
-<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

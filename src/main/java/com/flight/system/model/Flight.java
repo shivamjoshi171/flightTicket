@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -18,6 +19,15 @@ public class Flight {
 	@OneToOne(targetEntity = Cities.class)
 	@JoinColumn(name = "arival_city",referencedColumnName = "cityCode")
 	private Cities arivalCity;
+	@ManyToOne(targetEntity = Airline.class)
+	@JoinColumn(name="airline_id",referencedColumnName = "airlineId")
+	private Airline airlineId;
+	public Airline getAirlineId() {
+		return airlineId;
+	}
+	public void setAirlineId(Airline airlineId) {
+		this.airlineId = airlineId;
+	}
 	private String singleTicketPrice;
 	private String departureTime;
 	private String arrivalTime;

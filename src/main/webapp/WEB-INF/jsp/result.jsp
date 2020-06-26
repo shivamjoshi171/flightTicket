@@ -36,7 +36,85 @@ background-color: #dcdcdc45;
 	</head>
 
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<header class="header" style="background-color: #ffffff;box-shadow: 1px 2px 10px grey;">
+
+		<nav class="navbar navbar-style">
+			<div class="container">
+				<div class="navbar-header">
+					<h2 class=" display-3">Flight Booking</h2>
+				</div>
+				<ul class="nav navbar-nav  navbar-right"	>
+				<li><a href="/home"> Home</a></li>
+				<c:if test="${sessionScope.userEmail.equals('no')}">
+						<li>	<a  style="cursor: pointer" data-toggle="modal" data-target="#myModal">Login/Singup</a></li>
+					</c:if>
+				<c:if test="${!sessionScope.userEmail.equals('no')}">
+						<li><p style="color: #4285c0;margin: 15px;"> Welcome , ${sessionScope.userName}</p></li>
+						<li>	<a  href="/userProfile">Profile</a></li>
+						<li>	<a  href="/logout">Logout</a></li>
+					</c:if>
+				</ul>
+
+			</div>
+
+		</nav>
+		
+	</header>
+	
+	<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+         <form action="login" method="post">
+ 		<div class="form-group">
+ 		<label for="emailId">Email</label>
+   		 <input class="form-control"type="text" id="emailId" name="emailId" placeholder="Email" required="required">
+ 		</div>
+     	<div class="form-group">
+     	<label for="password">Password</label>
+    	<input class="form-control" type="password" id="password" name="password" placeholder=" Password" required="required">
+     	</div>
+     	<div class="form-check form-check-inline">
+  		<input class="form-check-input" type="radio" name="loginType" id="economy" value="User" required="required">
+ 		 <label class="form-check-label" for="economy">User</label>
+		</div>
+		<div class="form-check form-check-inline">
+  		<input class="form-check-input" type="radio" name="loginType" id="Premimum Economy" value="Admin" required="required">
+ 		 <label class="form-check-label" for="Premimum Economy">Admin</label>
+		</div>
+     	
+   		 <input type="submit" class="btn btn-primary btn-block" value="Submit">
+  		</form>
+  		<br>
+  		<a class="btn btn-primary btn-block" href="/register">Register</a>
+ 
+</div>
+
+      </div>
+     
+    </div>
+
+  </div>
+  
+ <!-- Headder end -->
+ 
+  <c:if test="${notfound ==1}">
+  	<div class="container jumbotron">
+  		<h1>No Flights Found on this route</h1>
+  		<p>Please Search again</p><br>
+  		<a href="/home" class="btn btn-primary"> search </a>
+  	</div>
+  
+  </c:if>
+  
+  
+  <c:if test="${notfound ==0}">
 
 <div class="container">
 
@@ -47,33 +125,60 @@ background-color: #dcdcdc45;
 <div class="row  eachRow">
 <div class="col-lg-11 flightDetail">
 <div class="row">
-<div class="col-lg-3">
+<div class="col-lg-2">
+Airline
+</div>
+<div class="col-lg-2">
 Departure Time
 </div>
-<div class="col-lg-3">
+<div class="col-lg-2">
 Arival Time
 </div>
-<div class="col-lg-3">
+<div class="col-lg-2">
 Available Seats
 </div>
-<div class="col-lg-3">
+<div class="col-lg-2">
+Seat Type
+</div>
+<div class="col-lg-2">
 Price
 </div>
 </div>
 
 <div class="row">
-<div class="col-lg-3">
+<div class="col-lg-2">
+ ${listValue.getAirlineId().getAirlineName() }
+</div>
+<div class="col-lg-2">
  ${listValue.getDepartureTime() }
 </div>
-<div class="col-lg-3">
+<div class="col-lg-2">
  ${listValue.getArrivalTime()}
 </div>
-<div class="col-lg-3">
+<div class="col-lg-2">
 ${listValue.getAvailableSeats() }
 </div>
-<div class="col-lg-3">
+<div class="col-lg-2">
+${sessionScope.seatType}
+</div>
+
+<c:if test="${sessionScope.seatType.equals('economy')}">
+<div class="col-lg-2">
 ${listValue.getSingleTicketPrice() }
 </div>
+</c:if>
+<c:if test="${sessionScope.seatType.equals('PremimumEconomy')}">
+<div class="col-lg-2">
+${listValue.getSingleTicketPrice() *1.10}
+</div>
+</c:if>
+<c:if test="${sessionScope.seatType.equals('Bussines')}">
+<div class="col-lg-2">
+${listValue.getSingleTicketPrice() *1.25}
+</div>
+</c:if>
+
+
 </div>
 </div>
 
@@ -86,7 +191,7 @@ ${listValue.getSingleTicketPrice() }
 
 </c:forEach>
 </div>
-
+</c:if>
 <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

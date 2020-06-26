@@ -13,9 +13,13 @@ import com.flight.system.model.Flight;
 public interface FlightRepo extends JpaRepository<Flight, String> {
 	
 	
-	@Query(value = "SELECT * FROM FLIGHT WHERE DEPARTURE_CITY=:dep",nativeQuery = true)
-	public Collection<Flight> getAllFlight(@Param("dep")String de);
+	@Query(value = "SELECT * FROM FLIGHT WHERE DEPARTURE_CITY=:dep AND ARIVAL_CITY=:ar AND airline_id is not null",nativeQuery = true)
+	public Collection<Flight> getAllFlight(@Param("dep")String de, @Param("ar") String ar);
 	
+	@Query(value = "SELECT * FROM FLIGHT WHERE  airline_id is  null",nativeQuery = true)
+	public Collection<Flight> getFlightInAirline(@Param("dep")String de);
 	
+	@Query(value = "SELECT * FROM FLIGHT WHERE  airline_id=:dep",nativeQuery = true)
+	public Collection<Flight> getFlightForAirline(@Param("dep")String de);
 	
 }
