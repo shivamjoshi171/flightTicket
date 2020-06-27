@@ -22,4 +22,7 @@ public interface FlightRepo extends JpaRepository<Flight, String> {
 	@Query(value = "SELECT * FROM FLIGHT WHERE  airline_id=:dep",nativeQuery = true)
 	public Collection<Flight> getFlightForAirline(@Param("dep")String de);
 	
+
+	
+	
 }

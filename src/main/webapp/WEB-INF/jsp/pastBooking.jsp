@@ -82,15 +82,7 @@ box-shadow: 0px 1px 11px #c1bfbf;
      	<label for="password">Password</label>
     	<input class="form-control" type="password" id="password" name="password" placeholder=" Password" required="required">
      	</div>
-     	<div class="form-check form-check-inline">
-  		<input class="form-check-input" type="radio" name="loginType" id="economy" value="User" required="required">
- 		 <label class="form-check-label" for="economy">User</label>
-		</div>
-		<div class="form-check form-check-inline">
-  		<input class="form-check-input" type="radio" name="loginType" id="Premimum Economy" value="Admin" required="required">
- 		 <label class="form-check-label" for="Premimum Economy">Admin</label>
-		</div>
-     	
+          	
    		 <input type="submit" class="btn btn-primary btn-block" value="Submit">
   		</form>
   		<br>

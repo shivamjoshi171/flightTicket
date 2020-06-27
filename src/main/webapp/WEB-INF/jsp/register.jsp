@@ -89,16 +89,7 @@ background-color: #dcdcdc45;
      	<div class="form-group">
      	<label for="password">Password</label>
     	<input class="form-control" type="password" id="password" name="password" placeholder=" Password" required="required">
-     	</div>
-     	<div class="form-check form-check-inline">
-  		<input class="form-check-input" type="radio" name="loginType" id="economy" value="User" required="required">
- 		 <label class="form-check-label" for="economy">User</label>
-		</div>
-		<div class="form-check form-check-inline">
-  		<input class="form-check-input" type="radio" name="loginType" id="Premimum Economy" value="Admin" required="required">
- 		 <label class="form-check-label" for="Premimum Economy">Admin</label>
-		</div>
-     	
+     	</div>	
    		 <input type="submit" class="btn btn-primary btn-block" value="Submit">
   		</form>
   		<br>
@@ -160,9 +151,17 @@ background-color: #dcdcdc45;
      <div class="form-group">
   <label for="lname">Repeat Password</label>
     <input type="password" class="form-control" id="repeatPassword" name="repeatPassword" placeholder="Repeat New Password" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" onkeyup="checkPassword()">  
-  
+   
   </div>
-      
+  <label for="lname">User Type</label>
+      <div class="form-check form-check-inline">
+  		<input class="form-check-input" type="radio" name="type" id="economy" value="User" required="required">
+ 		 <label class="form-check-label" for="economy">User</label>
+		</div>
+		<div class="form-check form-check-inline">
+  		<input class="form-check-input" type="radio" name="type" id="Premimum Economy" value="Admin" required="required">
+ 		 <label class="form-check-label" for="Premimum Economy">Admin</label>
+		</div>
     <input type="submit" class="btn btn-primary btn-block" id="submit"value="Submit">
   </form>
 

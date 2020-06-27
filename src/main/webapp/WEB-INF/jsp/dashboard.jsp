@@ -81,15 +81,7 @@ background-color: #dcdcdc45;
      	<label for="password">Password</label>
     	<input class="form-control" type="password" id="password" name="password" placeholder=" Password" required="required">
      	</div>
-     	<div class="form-check form-check-inline">
-  		<input class="form-check-input" type="radio" name="loginType" id="economy" value="User" required="required">
- 		 <label class="form-check-label" for="economy">User</label>
-		</div>
-		<div class="form-check form-check-inline">
-  		<input class="form-check-input" type="radio" name="loginType" id="Premimum Economy" value="Admin" required="required">
- 		 <label class="form-check-label" for="Premimum Economy">Admin</label>
-		</div>
-     	
+     	    	
    		 <input type="submit" class="btn btn-primary btn-block" value="Submit">
   		</form>
   		<br>
@@ -126,6 +118,7 @@ background-color: #dcdcdc45;
 	<th>Available Seats</th>
 	<th>TicketPrice</th>
 	<th> Edit</th>
+	<th> Remove</th>
 	<c:forEach var="listValue" items="${flightList}">
 		<tr>
 			<td>${listValue.getDepartureCity().getCityName()}</td>
@@ -135,6 +128,7 @@ background-color: #dcdcdc45;
 			<td>${listValue.getAvailableSeats()}</td>
 			<td>${listValue.getSingleTicketPrice()}</td>
 			<td><a class="glyphicon glyphicon-pencil" href="/updateFlightDetails/${listValue.getFlightId() }"></a></td>
+			<td><a class="glyphicon glyphicon-remove" href="/remove/${listValue.getFlightId() }"></a></td>
 		</tr>
 	</c:forEach>
 </table>

@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,7 +60,7 @@ public class Register {
 
 	@GetMapping("/home")
 	public String registerNewUser(ModelMap map, HttpServletRequest request) {
-		
+
 		ArrayList<String> cities = (ArrayList<String>) citiRepo.getAllCityCode();
 		if (request.getSession().getAttribute("userEmail") == null) {
 			request.getSession().setAttribute("userEmail", "no");
@@ -69,38 +70,30 @@ public class Register {
 	}
 
 	@PostMapping("/login")
-	public String checkAndLogin(HttpServletRequest request ,ModelMap map) {
-		if (request.getParameter("loginType").equals("User")) {
-			admin = false;
-			request.getSession().setAttribute("admin", 1);
+	public String checkAndLogin(HttpServletRequest request, ModelMap map) {		
 			if (userRepo.userExist(request.getParameter("emailId"), request.getParameter("password")) >= 1) {
 				request.getSession().setAttribute("userEmail", request.getParameter("emailId"));
 				request.getSession().setAttribute("userName",
 						userRepo.findUserByEmail(request.getParameter("emailId")).getFirstName());
 				request.getSession().setAttribute("error", 0);
-				return "redirect:/home";
+				String type=userRepo.findUserByEmail(request.getParameter("emailId")).getType();
+				if(type.equals("Admin")) {
+					admin = true;
+					request.getSession().setAttribute("admin", 0);
+					return"redirect:/dashboard";
+				}else {
+					admin = false;
+					request.getSession().setAttribute("admin", 1);
+					return "redirect:/home";
+				}
 			} else {
 				map.addAttribute("error", 1);
 				return "/home";
 			}
-
-		} else {
-			admin = true;
-			request.getSession().setAttribute("admin", 0);
-			if (userRepo.userExist(request.getParameter("emailId"), request.getParameter("password")) >= 1) {
-				request.getSession().setAttribute("userEmail", request.getParameter("emailId"));
-				request.getSession().setAttribute("userName",
-						userRepo.findUserByEmail(request.getParameter("emailId")).getFirstName());
-				request.getSession().setAttribute("error", 0);
-				return "redirect:/dashboard";
-			} else {
-				map.addAttribute("error", 1);
-				return "/home";
-			}
-
+			
 		}
 
-	}
+	
 
 	@GetMapping("/register")
 	public String registration(User user, ModelMap map) {
@@ -234,6 +227,38 @@ public class Register {
 		return "updateFlight";
 	}
 
+	@GetMapping("remove/{id}")
+	public String remove(@PathVariable String id) {
+		Optional<Flight> f = flightRepo.findById(id);
+		if (f.get().getAirlineId() == null) {
+			flightRepo.delete(f.get());
+		} else {
+			Optional<Airline> airline = airlineRepo.findById(f.get().getAirlineId().getAirlineId());
+			Collection<Flight> temp = airline.get().getFlight();
+			ArrayList<Flight> t = new ArrayList<>(temp);
+			t.remove(f.get());
+			airline.get().setFlight(t);
+			airlineRepo.save(airline.get());
+			flightRepo.delete(f.get());
+		}
+		return "redirect:/dashboard";
+	}
+
+	@GetMapping("/removeFromAirline/{id}")
+	public String removeFromAirline(@PathVariable String id) {
+		Optional<Flight> f = flightRepo.findById(id);
+		Optional<Airline> airline = airlineRepo.findById(f.get().getAirlineId().getAirlineId());
+		Collection<Flight> temp = airline.get().getFlight();
+		ArrayList<Flight> t = new ArrayList<>(temp);
+		t.remove(f.get());
+		airline.get().setFlight(t);
+		f.get().setAirlineId(null);
+		airlineRepo.save(airline.get());
+		flightRepo.save(f.get());
+
+		return "redirect:/viewFlighs/"+airline.get().getAirlineId();
+	}
+
 	@GetMapping("/cancelBooking/{id}")
 	public String cancelBooking(@PathVariable String id) {
 		if (bookingRepo.count() >= 1) {
@@ -344,7 +369,7 @@ public class Register {
 	public String logout(HttpServletRequest request) {
 		request.getSession().setAttribute("userEmail", "no");
 		request.getSession().setAttribute("admin", 1);
-
+		admin=false;
 		return "redirect:/home";
 	}
 
